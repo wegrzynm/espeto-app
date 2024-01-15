@@ -43,10 +43,7 @@ class AdminController extends AbstractDashboardController
     public function configureCrud(): Crud
     {
         return Crud::new()
-            ->setPaginatorPageSize(25)
-            ->addEntity('Addresses', Address::class)
-            ->addEntity('Contests', Contest::class)
-            ->addEntity('Participants', Participant::class);
+            ->setPaginatorPageSize(25);
     }
 
     public function configureAddressCrud(): Crud

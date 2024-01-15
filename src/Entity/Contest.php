@@ -24,6 +24,10 @@ class Contest
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
+    #[ORM\OneToOne(inversedBy: 'contest', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Address $address = null;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -84,6 +88,23 @@ class Contest
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(Address $address): static
+    {
+        $this->address = $address;
 
         return $this;
     }

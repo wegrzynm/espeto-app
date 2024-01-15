@@ -31,7 +31,7 @@ class Address
     private ?float $latitude = null;
 
     #[ORM\OneToOne(mappedBy: 'address', cascade: ['persist', 'remove'])]
-    private ?Participant $participant = null;
+    private ?Contest $contest = null;
 
     public function getId(): ?int
     {
@@ -98,19 +98,19 @@ class Address
         return $this;
     }
 
-    public function getParticipant(): ?Participant
+    public function getContest(): ?Contest
     {
-        return $this->participant;
+        return $this->contest;
     }
 
-    public function setParticipant(Participant $participant): static
+    public function setContest(Contest $contest): static
     {
         // set the owning side of the relation if necessary
-        if ($participant->getAddress() !== $this) {
-            $participant->setAddress($this);
+        if ($contest->getAddress() !== $this) {
+            $contest->setAddress($this);
         }
 
-        $this->participant = $participant;
+        $this->contest = $contest;
 
         return $this;
     }
