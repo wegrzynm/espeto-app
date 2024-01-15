@@ -1,3 +1,89 @@
 body {
     background-color: white;
 }
+
+
+
+    /* Basic Reset */
+    body, h1, h2, h3, p, ul, ol, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, button, input[type="submit"], input[type="reset"], input[type="button"], input[type="checkbox"], input[type="radio"], select {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        background: transparent;
+    }
+    
+    /* HTML5 Display */
+    article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+        display: block;
+    }
+    
+    /* Links */
+    a {
+        color: #333;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: #555;
+        text-decoration: underline;
+    }
+    
+    /* Body Styles */
+    body {
+        font-family: 'Arial', sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        background-color: #fff;
+    }
+    
+    /* Heading Styles */
+    h1, h2, h3 {
+        color: #333;
+        line-height: 1.2;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.8em;
+    }
+    
+    h3 {
+        font-size: 1.6em;
+    }
+    
+    /* Main Content */
+    .example-wrapper {
+        margin: 1em auto;
+        max-width: 800px;
+        width: 95%;
+        font: 18px/1.5 sans-serif;
+    }
+    
+    .example-wrapper h1 {
+        text-align: center;
+    }
+    
+    .example-wrapper p {
+        margin-bottom: 1em;
+    }
+    
+    .example-wrapper a {
+        display: inline-block;
+        margin-top: 1em;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+    
+    .example-wrapper a:hover {
+        background-color: #0056b3;
+    }
