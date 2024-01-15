@@ -2,88 +2,102 @@ body {
     background-color: white;
 }
 
+.example-wrapper {
+    margin: 1em auto;
+    max-width: 800px;
+    width: 95%;
+    font: 18px/1.5 sans-serif;
+    background-color: #f9f9f9;
+    padding: 2em;
+    border-radius: 5px;
+}
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
-    /* Basic Reset */
-    body, h1, h2, h3, p, ul, ol, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, button, input[type="submit"], input[type="reset"], input[type="button"], input[type="checkbox"], input[type="radio"], select {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        font-size: 100%;
-        background: transparent;
-    }
-    
-    /* HTML5 Display */
-    article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
-        display: block;
-    }
-    
-    /* Links */
-    a {
-        color: #333;
-        text-decoration: none;
-    }
-    
-    a:hover {
-        color: #555;
-        text-decoration: underline;
-    }
-    
-    /* Body Styles */
-    body {
-        font-family: 'Arial', sans-serif;
-        font-size: 16px;
-        line-height: 1.5;
-        color: #333;
-        background-color: #fff;
-    }
-    
-    /* Heading Styles */
-    h1, h2, h3 {
-        color: #333;
-        line-height: 1.2;
-    }
-    
-    h1 {
-        font-size: 2em;
-    }
-    
-    h2 {
-        font-size: 1.8em;
-    }
-    
-    h3 {
-        font-size: 1.6em;
-    }
-    
-    /* Main Content */
-    .example-wrapper {
-        margin: 1em auto;
-        max-width: 800px;
-        width: 95%;
-        font: 18px/1.5 sans-serif;
-    }
-    
-    .example-wrapper h1 {
-        text-align: center;
-    }
-    
-    .example-wrapper p {
-        margin-bottom: 1em;
-    }
-    
-    .example-wrapper a {
-        display: inline-block;
-        margin-top: 1em;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 4px;
-    }
-    
-    .example-wrapper a:hover {
-        background-color: #0056b3;
-    }
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.75em;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.full-width-button {
+    display: block;
+    width: 100%;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 0.75em;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 1em auto;
+    cursor: pointer;
+}
+
+.full-width-button:hover {
+    background-color: #3e8e41;
+}
+
+.example-wrapper {
+    text-align: center;
+    padding: 2rem;
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.full-width-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.full-width-button a {
+    color: white;
+    text-decoration: none;
+}
+
+.full-width-button:hover {
+    background-color: #45a049;
+}

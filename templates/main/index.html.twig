@@ -5,9 +5,60 @@
 {% block body %}
 
 <div class="example-wrapper">
-    <h1>
+    <h1 class="title">
         Tormacion Mesa de <span>Espeto</span>
     </h1>
 
-    <a href="{{ path('app_menu') }}">Check out</a>
+    <div class="button-container">
+        <button class="full-width-button">
+            <a href="{{ path('app_contest') }}">{{ 'Contests'|trans }}</a>
+        </button>
+        <button class="full-width-button">
+            <a href="{{ path('app_participant') }}">{{ 'Participants'|trans }}</a>
+        </button>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .example-wrapper {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .title {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .full-width-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .full-width-button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .full-width-button:hover {
+            background-color: #45a049;
+        }
+    </style>
 {% endblock %}

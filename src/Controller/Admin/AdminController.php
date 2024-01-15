@@ -26,8 +26,8 @@ class AdminController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('Espeto App')
-            ->setTitle('<img src="#"> ACME <span class="text-small">Corp.</span>')
-            ->setTextDirection('ltr')
+            ->setTitle('<img src="#"/> Espeto App')
+            ->renderContentMaximized()
             ->generateRelativeUrls();
     }
 
@@ -35,7 +35,6 @@ class AdminController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::section('Entities');
-        yield MenuItem::linkToCrud('Addresses', 'fas fa-map-marker', Address::class);
         yield MenuItem::linkToCrud('Contests', 'fas fa-trophy', Contest::class);
         yield MenuItem::linkToCrud('Participants', 'fas fa-users', Participant::class);
     }
@@ -59,7 +58,7 @@ class AdminController extends AbstractDashboardController
         return Crud::new()
             ->setEntityLabelInSingular('Contest')
             ->setEntityLabelInPlural('Contests')
-            ->setSearchFields(['name', 'description']); // Customize the fields available for searching
+            ->setSearchFields(['id', 'name', 'description']); // Customize the fields available for searching
     }
 
     public function configureParticipantCrud(): Crud
@@ -67,6 +66,6 @@ class AdminController extends AbstractDashboardController
         return Crud::new()
             ->setEntityLabelInSingular('Participant')
             ->setEntityLabelInPlural('Participants')
-            ->setSearchFields(['name', 'date']); // Customize the fields available for searching
+            ->setSearchFields(['id', 'name', 'date', 'Contest']); // Customize the fields available for searching
     }
 }

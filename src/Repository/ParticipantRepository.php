@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Participant;
 use App\Entity\Restaurant;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -21,6 +22,22 @@ class ParticipantRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Participant::class);
     }
+    
+    /**
+    * @return Restaurant[] Returns an array of Restaurant objects
+    */
+   public function findAllFromCurrentEvents(DateTime $date): array
+   {
+       return $this->createQueryBuilder('r')
+            ->join('r.contest', 'c', 'r.contest = c.id')
+           ->andWhere('c.date > :val')
+           ->setParameter('val', $date)
+           ->orderBy('c.date', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
 
 //    /**
 //     * @return Restaurant[] Returns an array of Restaurant objects

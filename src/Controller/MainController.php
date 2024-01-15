@@ -15,13 +15,4 @@ class MainController extends AbstractController
             'controller_name' => 'Home Page',
         ]);
     }
-
-    //Experimental url to find what vision our leader had
-    #[Route('/menu', name: 'app_menu')]
-    public function menu(): Response
-    {
-        return $this->render('main/menu.html.twig', [
-            'controller_name' => 'Menu Page',
-        ]);
-    }
 }

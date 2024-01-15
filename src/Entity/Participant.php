@@ -5,10 +5,8 @@ namespace App\Entity;
 use App\Repository\ParticipantRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\UX\Turbo\Attribute\Broadcast;
 
 #[ORM\Entity(repositoryClass: ParticipantRepository::class)]
-#[Broadcast]
 class Participant
 {
     #[ORM\Id]
@@ -22,9 +20,6 @@ class Participant
     #[ORM\ManyToOne(inversedBy: 'participant')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Contest $contest = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date = null;
 
     public function getId(): ?int
     {
@@ -51,18 +46,6 @@ class Participant
     public function setContest(?Contest $contest): static
     {
         $this->contest = $contest;
-
-        return $this;
-    }
-
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): static
-    {
-        $this->date = $date;
 
         return $this;
     }

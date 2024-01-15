@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ParticipantRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,7 +17,7 @@ class ParticipantController extends AbstractController
     #[Route('/participant', name: 'app_participant')]
     public function index(): Response
     {
-        $participants = $this->participantRepository->findAll();
+        $participants = $this->participantRepository->findAllFromCurrentEvents(new DateTime());
         return $this->render('participant/index.html.twig', [
             'controller_name' => 'ParticipantController',
             'participants' => $participants
