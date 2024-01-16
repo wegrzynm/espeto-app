@@ -5,24 +5,18 @@
 {% block body %}
 
 <div class="example-wrapper">
-<style>
-.a-button {
-    width: 90%;
-    margin-right: 5px;
-}
-</style>
     <h1 class="title">
         Formacion Mesa de <span>Espeto</span>
     </h1>
 
-    <div class="button-container">
-        <a href="{{ path('app_contest') }}" class="a-button">
-            <button class="full-width-button">
+    <div class="button-container-main">
+        <a href="{{ path('app_contest') }}" class="a-button-main">
+            <button class="full-width-button-main">
             {{ 'Contests'|trans }}
             </button>
         </a>
-        <a href="{{ path('app_participant') }}" class="a-button">
-            <button class="full-width-button">
+        <a href="{{ path('app_participant') }}" class="a-button-main">
+            <button class="full-width-button-main">
                 {{ 'Participants'|trans }}
             </button>
         </a>
@@ -43,32 +37,40 @@
             margin-bottom: 2rem;
         }
 
-        .button-container {
+        .button-container-main {
             display: flex;
             justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
         }
 
-        .full-width-button {
-            background-color: #4CAF50;
+        .full-width-button-main {
+            background-color: #3498db;
             border: none;
             color: white;
-            padding: 15px 32px;
+            padding: 20px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
+            font-size: 40px;
             cursor: pointer;
             width: 100%;
+            box-sizing: border-box;
+            min-height: 200px;
+            text-transform: uppercase;
         }
 
-        .full-width-button a {
+        .full-width-button-main a {
             color: white;
             text-decoration: none;
         }
 
-        .full-width-button:hover {
-            background-color: #45a049;
+        .full-width-button-main:hover {
+            background-color: #2980b9;
+        }
+
+        .a-button-main {
+            width: 49%;
         }
     </style>
 {% endblock %}

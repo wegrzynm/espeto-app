@@ -1,8 +1,8 @@
 Dashboard: Panel
 ENTITIES: ENTIDADES
-Contest: Concurso
-Contests: Concursos
-Participant: Partícipe
+Contest: Cursos
+Contests: Cursos
+Participant: Alumno
 Participants: Alumnos
 Name: Nombre
 City: Ciudad
@@ -15,5 +15,5 @@ Sign in: Login
 Please sign in: Por favor, registrese
 You are logged in as: Has iniciado sesión como
 No data: Sin datos
-Go back: Regresa
+Go back: Inicio
 Welcome to Admin Dashboard: Bienvenido al Panel de administración

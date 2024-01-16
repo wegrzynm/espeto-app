@@ -36,7 +36,7 @@ class AdminController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::section('Entities');
-        yield MenuItem::linkToCrud('Contests', 'fas fa-trophy', Contest::class);
+        yield MenuItem::linkToCrud('Contests', 'fas fa-book', Contest::class);
         yield MenuItem::linkToCrud('Participants', 'fas fa-users', Participant::class);
         // yield MenuItem::section('Settings');
         // yield MenuItem::linkToCrud('Users', 'fas fa-user', User::class);
@@ -45,7 +45,7 @@ class AdminController extends AbstractDashboardController
     public function configureCrud(): Crud
     {
         return Crud::new()
-            ->setPaginatorPageSize(25);
+            ->setPaginatorPageSize(10);
     }
 
     public function configureAddressCrud(): Crud
