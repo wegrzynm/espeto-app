@@ -5,17 +5,27 @@
 {% block body %}
 
 <div class="example-wrapper">
+<style>
+.a-button {
+    width: 90%;
+    margin-right: 5px;
+}
+</style>
     <h1 class="title">
         Tormacion Mesa de <span>Espeto</span>
     </h1>
 
     <div class="button-container">
-        <button class="full-width-button">
-            <a href="{{ path('app_contest') }}">{{ 'Contests'|trans }}</a>
-        </button>
-        <button class="full-width-button">
-            <a href="{{ path('app_participant') }}">{{ 'Participants'|trans }}</a>
-        </button>
+        <a href="{{ path('app_contest') }}" class="a-button">
+            <button class="full-width-button">
+            {{ 'Contests'|trans }}
+            </button>
+        </a>
+        <a href="{{ path('app_participant') }}" class="a-button">
+            <button class="full-width-button">
+                {{ 'Participants'|trans }}
+            </button>
+        </a>
     </div>
 </div>
 

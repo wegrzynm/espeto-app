@@ -46,22 +46,29 @@ thead th {
 }
 
 .full-width-button {
-    display: block;
-    width: 100%;
     background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 0.75em;
+    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 18px;
-    margin: 1em auto;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
+    width: 100%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
 .full-width-button:hover {
-    background-color: #3e8e41;
+    background-color: #45a049;
 }
 
 .example-wrapper {
@@ -77,27 +84,4 @@ thead th {
 .button-container {
     display: flex;
     justify-content: space-between;
-}
-
-.full-width-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    width: 100%;
-}
-
-.full-width-button a {
-    color: white;
-    text-decoration: none;
-}
-
-.full-width-button:hover {
-    background-color: #45a049;
 }

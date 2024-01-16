@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Address;
 use App\Entity\Contest;
 use App\Entity\Participant;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -37,6 +38,8 @@ class AdminController extends AbstractDashboardController
         yield MenuItem::section('Entities');
         yield MenuItem::linkToCrud('Contests', 'fas fa-trophy', Contest::class);
         yield MenuItem::linkToCrud('Participants', 'fas fa-users', Participant::class);
+        // yield MenuItem::section('Settings');
+        // yield MenuItem::linkToCrud('Users', 'fas fa-user', User::class);
     }
 
     public function configureCrud(): Crud
@@ -66,6 +69,14 @@ class AdminController extends AbstractDashboardController
         return Crud::new()
             ->setEntityLabelInSingular('Participant')
             ->setEntityLabelInPlural('Participants')
-            ->setSearchFields(['id', 'name', 'date', 'Contest']); // Customize the fields available for searching
+            ->setSearchFields(['id', 'name', 'date', 'contest.name']); // Customize the fields available for searching
+    }
+
+    public function configureUserCrud(): Crud
+    {
+        return Crud::new()
+            ->setEntityLabelInSingular('User')
+            ->setEntityLabelInPlural('Users')
+            ->setSearchFields(['id', 'email']); // Customize the fields available for searching
     }
 }
