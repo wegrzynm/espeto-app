@@ -22,17 +22,36 @@ class ParticipantRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Participant::class);
     }
+
+    /**
+    * @return Restaurant[] Returns an array of Restaurant objects
+    */
+   public function countAllFromCurrentEvents(DateTime $date): array
+   {
+       return $this->createQueryBuilder('r')
+            ->join('r.contest', 'c', 'r.contest = c.id')
+           ->where('c.startDate >= :val')
+           ->orWhere('c.endDate >= :val')
+           ->setParameter('val', $date)
+           ->orderBy('c.startDate', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
     
     /**
     * @return Restaurant[] Returns an array of Restaurant objects
     */
-   public function findAllFromCurrentEvents(DateTime $date): array
+   public function findAllFromCurrentEvents(DateTime $date, int $offset, int $maxResults): array
    {
        return $this->createQueryBuilder('r')
             ->join('r.contest', 'c', 'r.contest = c.id')
-           ->andWhere('c.date > :val')
+           ->where('c.startDate >= :val')
+           ->orWhere('c.endDate >= :val')
            ->setParameter('val', $date)
-           ->orderBy('c.date', 'ASC')
+           ->orderBy('c.startDate', 'ASC')
+           ->setFirstResult($offset)
+           ->setMaxResults($maxResults)
            ->getQuery()
            ->getResult()
        ;

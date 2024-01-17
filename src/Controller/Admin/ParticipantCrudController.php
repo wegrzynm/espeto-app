@@ -21,8 +21,10 @@ class ParticipantCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
-            AssociationField::new('contest')->setRequired(true)
+            TextField::new('lastName'),
+            AssociationField::new('contest')->setRequired(true),
+            DateTimeField::new('startDate')->setRequired(true),
+            DateTimeField::new('endDate')->setRequired(true),
         ];
     }
-
 }

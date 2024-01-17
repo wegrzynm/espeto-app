@@ -10,17 +10,24 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ParticipantController extends AbstractController
 {
+    private readonly int $maxResultPerPage;
     public function __construct(private readonly ParticipantRepository $participantRepository)
     {
+        $this->maxResultPerPage = 10;
     }
 
-    #[Route('/participant', name: 'app_participant')]
-    public function index(): Response
+    #[Route('/participant/{page}', name: 'app_participant')]
+    public function index(int $page=0): Response
     {
-        $participants = $this->participantRepository->findAllFromCurrentEvents(new DateTime());
+        $numberOfParticipants = count($this->participantRepository->countAllFromCurrentEvents(new DateTime()));
+        $numberOfPages = ceil(($numberOfParticipants/$this->maxResultPerPage));
+        $participants = $this->participantRepository->findAllFromCurrentEvents(new DateTime(),($page*$this->maxResultPerPage), $this->maxResultPerPage);
+
         return $this->render('participant/index.html.twig', [
             'controller_name' => 'ParticipantController',
-            'participants' => $participants
+            'participants' => $participants,
+            'numberOfPages' => $numberOfPages - 1,
+            'pageNo' => $page
         ]);
     }
 }

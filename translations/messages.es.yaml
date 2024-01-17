@@ -5,6 +5,7 @@ Contests: Cursos
 Participant: Alumno
 Participants: Alumnos
 Name: Nombre
+Last Name: Apellido
 City: Ciudad
 date: fecha
 Date: Fecha
@@ -17,3 +18,7 @@ You are logged in as: Has iniciado sesión como
 No data: Sin datos
 Go back: Inicio
 Welcome to Admin Dashboard: Bienvenido al Panel de administración
+Prev.: Anterior
+Next: Siguiente
+Start Date: Fetcha inicio
+End Date: Fetcha final

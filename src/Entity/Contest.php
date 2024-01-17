@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 #[ORM\Entity(repositoryClass: ContestRepository::class)]
 class Contest
@@ -33,7 +35,10 @@ class Contest
     private ?string $city = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $date = null;
+    private ?\DateTimeInterface $startDate = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $endDate = null;
 
     public function __construct()
     {
@@ -128,15 +133,40 @@ class Contest
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getStartDate(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->startDate;
     }
 
-    public function setDate(\DateTimeInterface $date): static
+    public function setStartDate(\DateTimeInterface $startDate): static
     {
-        $this->date = $date;
+        $this->startDate = $startDate;
 
         return $this;
+    }
+
+    public function getEndDate(): ?\DateTimeInterface
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate(\DateTimeInterface $endDate): static
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    #[Assert\Callback]
+    public function validate(ExecutionContextInterface $context) {
+        if($this->startDate >= $this->endDate)
+        {
+            $context->buildViolation('End date must be bigger than Start Date.')
+            ->atPath('startDate')
+            ->addViolation();
+            $context->buildViolation('End date must be bigger than Start Date.')
+            ->atPath('endDate')
+            ->addViolation();
+        }
     }
 }

@@ -11,7 +11,8 @@
                 <th>{{ 'Name'|trans }}</th>
                 <th>{{ 'City'|trans }}</th>
                 <th>{{ 'Contest'|trans }}</th>
-                <th>{{ 'Date'|trans }}</th>
+                <th>{{ 'Start Date'|trans }}</th>
+                <th>{{ 'End Date'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +20,7 @@
             {% for participant in participants %}
                 <tr>
                     <td>
-                        {{ participant.name }}
+                        {{ participant.fullName }}
                     </td>
                     <td>
                         {{ participant.contest.city }}
@@ -28,7 +29,10 @@
                         {{ participant.contest.name }}
                     </td>
                     <td>
-                        {{ participant.contest.date|date('d/m/Y') }}
+                        {{ participant.contest.startDate|date('d/m/Y') }}
+                    </td>
+                    <td>
+                        {{ participant.contest.endDate|date('d/m/Y') }}
                     </td>
                 </tr>
             {% endfor %}
@@ -40,18 +44,39 @@
         </tbody>
     </table>
     <div class="button-container">
-        <a href="{{ path('app_main') }}">
-            <button class="full-width-button">
-                {{ 'Go back'|trans }}
-            </button>
+        <a href="{{ path('app_main') }}" class="left-button go-back-button">
+            {{ 'Go back'|trans }}
         </a>
+        <div class="right-buttons">
+            {% if pageNo > 0 %}
+                {% set prevPage = pageNo - 1 %}
+                <a href="{{ path('app_participant', {'page': prevPage}) }}" class="right-button prev-button">
+                    {{ 'Prev.'|trans }}
+                </a>
+            {% else %}
+                <a class="right-button prev-button disabled" disabled>
+                    {{ 'Prev.'|trans }}
+                </a>
+            {% endif %}
+            {% if pageNo < numberOfPages %}
+                {% set nextPage = pageNo + 1 %}
+                <a href="{{ path('app_participant', {'page': nextPage}) }}" class="right-button next-button">
+                    {{ 'Next'|trans }}
+                </a>
+            {% else %}
+                <a class="right-button next-button disabled" disabled>
+                    {{ 'Next'|trans }}
+                </a>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}
 
+
 {% block stylesheets %}
 <style>
-.example-wrapper {
+  .example-wrapper {
     margin: 1em auto;
     max-width: 800px;
     width: 95%;
@@ -59,42 +84,56 @@
     background-color: #f9f9f9;
     padding: 2em;
     border-radius: 5px;
-}
+    text-align: center;
+    padding: 2rem;
+  }
 
-table {
+  table {
     border-collapse: collapse;
     width: 100%;
-}
+  }
 
-th, td {
+  th, td {
     border: 1px solid #ddd;
     padding: 0.75em;
     text-align: left;
-}
+  }
 
-th {
+  th {
     background-color: #3498db;
     color: white;
     font-weight: bold;
-}
+  }
 
-tr:nth-child(even) {
+  tr:nth-child(even) {
     background-color: #f2f2f2;
-}
+  }
 
-tr:hover {
+  tr:hover {
     background-color: #ddd;
-}
+  }
 
-thead th {
+  thead th {
     position: sticky;
     top: 0;
     background-color: #3498db;
     color: white;
     font-weight: bold;
-}
+  }
 
-.full-width-button {
+  .title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .left-button {
     background-color: #3498db;
     border: none;
     color: white;
@@ -105,34 +144,45 @@ thead th {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    width: 100%;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-}
-
-.full-width-button:hover {
+    width: 33%;
+    box-sizing: border-box;
+  }
+  
+  .left-button:hover, .right-button {
     background-color: #2980b9;
-}
+  }
 
-.example-wrapper {
-    text-align: center;
-    padding: 2rem;
-}
-
-.title {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-}
-
-.button-container {
+  .right-buttons {
     display: flex;
-    justify-content: space-between;
-}
+    width: 60%;
+    justify-content: flex-end;
+  }
+
+  .right-button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+  .right-button:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .go-back-button {
+    left: 0;
+  }
+  .disabled {
+    background-color: gray;
+    opacity: 0.5;
+    pointer: cursor;
+  }
 </style>
 {% endblock %}

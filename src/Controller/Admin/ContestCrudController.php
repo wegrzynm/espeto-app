@@ -10,8 +10,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 
 class ContestCrudController extends AbstractCrudController
 {
@@ -27,7 +25,8 @@ class ContestCrudController extends AbstractCrudController
             TextField::new('name'),
             TextareaField::new('description')->hideOnIndex(),   
             TextField::new('city'),
-            DateTimeField::new('date'),
+            DateTimeField::new('startDate'),
+            DateTimeField::new('endDate'),
         ];
     }
 }
