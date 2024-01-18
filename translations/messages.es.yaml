@@ -5,7 +5,7 @@ Contests: Cursos
 Participant: Alumno
 Participants: Alumnos
 Name: Nombre
-Last Name: Apellido
+Last Name: Apellidos
 City: Ciudad
 date: fecha
 Date: Fecha
@@ -20,8 +20,9 @@ Go back: Inicio
 Welcome to Admin Dashboard: Bienvenido al Panel de administración
 Prev.: Anterior
 Next: Siguiente
-Start Date: Fetcha inicio
-End Date: Fetcha final
+Start Date: Fecha inicio
+End Date: Fecha final
 Settings: Ajustes
 User: Usuario
-Users: Usuarias
+Users: Usuarios
+Name & Lastname: Nombre y Apellidos

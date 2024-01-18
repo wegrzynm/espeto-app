@@ -26,8 +26,8 @@ class AdminController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Espeto App')
-            ->setTitle('<img src="#"/> Espeto App')
+            ->setTitle('Formacion Mesa de <b>Espeto</b>')
+            ->setTitle('<img src="#"/> <br>Formacion Mesa de <b>Espeto</b>')
             ->renderContentMaximized()
             ->generateRelativeUrls();
     }

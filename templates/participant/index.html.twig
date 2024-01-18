@@ -8,7 +8,7 @@
     <table>
         <thead>
             <tr>
-                <th>{{ 'Name'|trans }}</th>
+                <th>{{ 'Name & Lastname'|trans }}</th>
                 <th>{{ 'City'|trans }}</th>
                 <th>{{ 'Contest'|trans }}</th>
                 <th>{{ 'Start Date'|trans }}</th>
@@ -77,26 +77,22 @@
 {% block stylesheets %}
 <style>
   .example-wrapper {
-    margin: 1em auto;
-    max-width: 800px;
-    width: 95%;
-    font: 18px/1.5 sans-serif;
-    background-color: #f9f9f9;
-    padding: 2em;
-    border-radius: 5px;
-    text-align: center;
-    padding: 2rem;
+      text-align: center;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
   }
 
   table {
     border-collapse: collapse;
     width: 100%;
+    margin-bottom: 15px
   }
 
   th, td {
     border: 1px solid #ddd;
     padding: 0.75em;
-    text-align: left;
+    text-align: center;
   }
 
   th {
@@ -119,6 +115,10 @@
     background-color: #3498db;
     color: white;
     font-weight: bold;
+  }
+
+  tbody{
+    font-size: 14px;
   }
 
   .title {
@@ -182,7 +182,7 @@
   .disabled {
     background-color: gray;
     opacity: 0.5;
-    pointer: cursor;
+    cursor: default;
   }
 </style>
 {% endblock %}
