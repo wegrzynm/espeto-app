@@ -2,7 +2,7 @@
 # Espeto App
 
 ## Server requirements:
-   - Linux: min. 1GB RAM,
+   - Linux server(Debian, Ubuntu): min. 1GB RAM,
    - [Composer](https://getcomposer.org/download/)
    - PHP: >=8.1,
    - MySql,
@@ -77,3 +77,7 @@ Example configuration file for apache HTTPS server. Remember to obtain your ssl 
 </IfModule>
 ```
 #### 7. Everything should work now
+
+## Support
+
+For support, email matzyn.yt@gmail.com

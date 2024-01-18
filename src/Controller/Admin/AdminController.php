@@ -38,8 +38,8 @@ class AdminController extends AbstractDashboardController
         yield MenuItem::section('Entities');
         yield MenuItem::linkToCrud('Contests', 'fas fa-book', Contest::class);
         yield MenuItem::linkToCrud('Participants', 'fas fa-users', Participant::class);
-        // yield MenuItem::section('Settings');
-        // yield MenuItem::linkToCrud('Users', 'fas fa-user', User::class);
+        yield MenuItem::section('Settings');
+        yield MenuItem::linkToCrud('Users', 'fas fa-user', User::class);
     }
 
     public function configureCrud(): Crud
@@ -77,6 +77,6 @@ class AdminController extends AbstractDashboardController
         return Crud::new()
             ->setEntityLabelInSingular('User')
             ->setEntityLabelInPlural('Users')
-            ->setSearchFields(['id', 'email']); // Customize the fields available for searching
+            ->setSearchFields(['id', 'email', 'roles']); // Customize the fields available for searching
     }
 }
