@@ -38,7 +38,7 @@ class AdminController extends AbstractDashboardController
         yield MenuItem::section('Entities');
         yield MenuItem::linkToCrud('Contests', 'fas fa-book', Contest::class);
         yield MenuItem::linkToCrud('Participants', 'fas fa-users', Participant::class);
-        yield MenuItem::section('Settings');
+        yield MenuItem::section('Settings', 'fas fa-gears');
         yield MenuItem::linkToCrud('Users', 'fas fa-user', User::class);
     }
 
