@@ -1,0 +1,177 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Participants'|trans }}{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+  <h1>Logo</h1>
+        {% if contest is not null %}
+            <h2>
+                {{ contest.name }}
+            </h2>
+            <hr>
+            <p>
+                {{ contest.description }}
+            </p>
+            <hr>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            {{ 'Date'|trans }}
+                        </td>
+                        <td>
+                            {{ contest.startDate|date('d/m/Y') }} - {{ contest.endDate|date('d/m/Y') }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ 'Duration'|trans }}
+                        </td>
+                        <td>
+                            {% set difference = date(contest.endDate).diff(date(contest.startDate)) %}
+                            {% set leftDays = difference.days %}
+                            {% if leftDays == 1 %}
+                            1 {{ 'day'|trans }}
+                            {% else %}
+                            {{ leftDays }} {{ 'days'|trans }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ 'Place'|trans }}
+                        </td>
+                        <td>
+                            {{ contest.city }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ 'Host of the event: '|trans }}
+                        </td>
+                        <td>
+                            {% if contest.contestHost is not null  %}
+                                {{ contest.contestHost.fullName }} TODO
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ 'Online: '|trans }}
+                        </td>
+                        <td>
+                            {% if contest.isOnline %}
+                                ✔
+                            {% else %}
+                                ❌
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        {% else %}
+                {{ 'No data'|trans }}
+        {% endif %}
+     <div class="button-container">
+        <a href="{{ path('app_contest') }}">
+            <button class="full-width-button">
+                {{ 'Go back'|trans }}
+            </button>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+.example-wrapper {
+    margin: 1em auto;
+    width: 90%;
+    font: 18px/1.5 sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    margin-bottom: 15px;
+}
+
+colgroup {
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.75em;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: #3498db; 
+    color: white;
+    font-weight: bold;
+}
+
+.full-width-button {
+    background-color: #3498db; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align:center
+}
+
+.full-width-button:hover {
+    background-color: #2980b9;
+}
+
+.example-wrapper {
+    text-align: center;
+    padding: 2rem;
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+</style>
+{% endblock %}

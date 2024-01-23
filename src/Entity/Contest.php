@@ -40,6 +40,13 @@ class Contest
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $endDate = null;
 
+    #[ORM\ManyToOne(inversedBy: 'contests')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?ContestHost $contestHost = null;
+
+    #[ORM\Column]
+    private ?bool $isOnline = null;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -168,5 +175,29 @@ class Contest
             ->atPath('endDate')
             ->addViolation();
         }
+    }
+
+    public function getContestHost(): ?ContestHost
+    {
+        return $this->contestHost;
+    }
+
+    public function setContestHost(?ContestHost $contestHost): static
+    {
+        $this->contestHost = $contestHost;
+
+        return $this;
+    }
+
+    public function isIsOnline(): ?bool
+    {
+        return $this->isOnline;
+    }
+
+    public function setIsOnline(bool $isOnline): static
+    {
+        $this->isOnline = $isOnline;
+
+        return $this;
     }
 }

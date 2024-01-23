@@ -7,13 +7,15 @@
   <h1>Logo</h1>
     <table>
         <colgroup>
-            <col style="width: 33%;">
-            <col style="width: 67%;">
+            <col style="width: 30%;">
+            <col style="width: 60%;">
+            <col style="width: 10%;">
         </colgroup>
         <thead>
             <tr>
                 <th>{{ 'Contest'|trans }}</th>
                 <th>{{ 'Description'|trans }}</th>
+                <th>{{ 'Details'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -26,11 +28,16 @@
                     <td>
                         {{ contest.description }}
                     </td>
+                    <td>
+                        <a href="{{ path('app_contest_detail', {'id': contest.id }) }}" class="table-text">
+                            {{ 'Details'|trans }}
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         {% else %}
             <tr>
-                <td colspan="2">{{ 'No data'|trans }}</td>
+                <td colspan="3">{{ 'No data'|trans }}</td>
             </tr>
         {% endif %}
         </tbody>
@@ -134,6 +141,10 @@ a {
 .button-container {
     display: flex;
     justify-content: space-between;
+}
+
+.table-text {
+    color: black;
 }
 </style>
 {% endblock %}
