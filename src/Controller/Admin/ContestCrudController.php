@@ -24,8 +24,9 @@ class ContestCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
-            TextareaField::new('description')->hideOnIndex(),   
+            TextareaField::new('description')->hideOnIndex()->setMaxLength(255),   
             TextField::new('city'),
+            TextField::new('host'),
             DateTimeField::new('startDate'),
             DateTimeField::new('endDate'),
             BooleanField::new('isOnline'),

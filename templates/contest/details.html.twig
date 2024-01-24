@@ -48,12 +48,10 @@
                     </tr>
                     <tr>
                         <td>
-                            {{ 'Host of the event: '|trans }}
+                            {{ 'Host'|trans }}
                         </td>
                         <td>
-                            {% if contest.contestHost is not null  %}
-                                {{ contest.contestHost.fullName }} TODO
-                            {% endif %}
+                            {{ contest.host }}
                         </td>
                     </tr>
                     <tr>

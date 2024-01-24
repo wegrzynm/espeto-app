@@ -40,9 +40,8 @@ class Contest
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $endDate = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contests')]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?ContestHost $contestHost = null;
+    #[ORM\Column(length: 150)]
+    private ?string $host = null;
 
     #[ORM\Column]
     private ?bool $isOnline = null;
@@ -177,14 +176,14 @@ class Contest
         }
     }
 
-    public function getContestHost(): ?ContestHost
+    public function getHost(): ?string
     {
-        return $this->contestHost;
+        return $this->host;
     }
 
-    public function setContestHost(?ContestHost $contestHost): static
+    public function setHost(string $host): static
     {
-        $this->contestHost = $contestHost;
+        $this->host = $host;
 
         return $this;
     }
