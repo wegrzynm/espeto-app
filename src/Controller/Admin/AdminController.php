@@ -61,7 +61,7 @@ class AdminController extends AbstractDashboardController
         return Crud::new()
             ->setEntityLabelInSingular('Contest')
             ->setEntityLabelInPlural('Contests')
-            ->setSearchFields(['id', 'name', 'description']); // Customize the fields available for searching
+            ->setSearchFields(['id', 'name', 'description', 'host']); // Customize the fields available for searching
     }
 
     public function configureParticipantCrud(): Crud
