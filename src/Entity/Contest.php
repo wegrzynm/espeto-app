@@ -40,6 +40,12 @@ class Contest
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $endDate = null;
 
+    #[ORM\Column(length: 150)]
+    private ?string $host = null;
+
+    #[ORM\Column]
+    private ?bool $isOnline = null;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -168,5 +174,29 @@ class Contest
             ->atPath('endDate')
             ->addViolation();
         }
+    }
+
+    public function getHost(): ?string
+    {
+        return $this->host;
+    }
+
+    public function setHost(string $host): static
+    {
+        $this->host = $host;
+
+        return $this;
+    }
+
+    public function isIsOnline(): ?bool
+    {
+        return $this->isOnline;
+    }
+
+    public function setIsOnline(bool $isOnline): static
+    {
+        $this->isOnline = $isOnline;
+
+        return $this;
     }
 }

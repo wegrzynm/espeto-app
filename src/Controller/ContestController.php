@@ -19,8 +19,16 @@ class ContestController extends AbstractController
         $contests = $this->contestRepository->findAll();
 
         return $this->render('contest/index.html.twig', [
-            'controller_name' => 'ContestController',
             'contests' => $contests
+        ]);
+    }
+
+    #[Route('/contest/{id}', name: 'app_contest_detail')]
+    public function details(int $id): Response
+    {  
+        $contest = $this->contestRepository->findOneBy(['id' => $id]);
+        return $this->render('contest/details.html.twig', [
+            'contest' => $contest
         ]);
     }
 }

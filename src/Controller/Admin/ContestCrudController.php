@@ -6,6 +6,7 @@ use App\Entity\Contest;
 use App\Form\AddressType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -23,10 +24,12 @@ class ContestCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
-            TextareaField::new('description')->hideOnIndex(),   
+            TextareaField::new('description')->hideOnIndex()->setMaxLength(255),   
             TextField::new('city'),
+            TextField::new('host'),
             DateTimeField::new('startDate'),
             DateTimeField::new('endDate'),
+            BooleanField::new('isOnline'),
         ];
     }
 }
